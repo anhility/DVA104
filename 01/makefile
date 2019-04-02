@@ -1,7 +1,7 @@
 # silence make output when you don't feel like using -s
 #.SILENT:
 
-TARGET_EXEC ?= main.out
+TARGET_EXEC ?= 01.out
 
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./src
@@ -13,7 +13,7 @@ DEPS := $(OBJS:.o=.d)
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
-CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
+CPPFLAGS ?= $(INC_FLAGS) -MMD -MP -g -Wall -Wextra
 
 $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
