@@ -38,10 +38,12 @@ int dstring_concatenate(DString* destination, DString source)
 	   - Tänk på att vi kommer att behöva allokera mer minne för att få plats med den här längre strängen. 
 	   */
   int s_size = strlen(*destination) + strlen(source);
-  destination = (DString*)realloc(destination, s_size);
+  *destination = realloc(*destination, s_size);
   assert(destination != NULL);
 
-  DString tmp = *destination;
+  char tmp[s_size];
+  strcpy(tmp, *destination);
+
   *destination = strcat(*destination, source);
 
 	// Post condition: *destination innehåller den gamla strängen ihopslagen med source
@@ -53,24 +55,39 @@ int dstring_concatenate(DString* destination, DString source)
 void dstring_truncate(DString* destination, unsigned int truncatedLength)
 {
 	// Precondition: destination är ej NULL, *destination är ej NULL
+  assert(destination != NULL);
+  assert(*destination != NULL);
 
 	/* Tips:
 	   - Använd realloc för att frigöra det överflödiga minnet
 	   - glöm inte nolltermineringen */
-
+  DString tmp = *destination;
+  tmp[truncatedLength] = '\0';
+  *destination = tmp;
+  *destination = realloc(*destination, truncatedLength);
+ 
 	// Postcondition: *destination är inte längre än 'truncatedLength' tecken
+  assert(strlen(*destination) == truncatedLength);
 }
 
 void dstring_print(DString str, FILE* textfile)
 {
 	// Precondition: textfile är inte NULL
+  assert(textfile != NULL);
 
 	/* filpekaren får inte stängas, filen ska fungera som vanligt efter anropet */
+  fprintf(textfile, "%s", str);
+
 }
 
 void dstring_delete(DString* stringToDelete)
 {
 	// Precondition: stringToDelete är inte NULL
+  assert(stringToDelete != NULL);
+
+  free(*stringToDelete);
+  *stringToDelete = NULL;
 
 	// Postcondition: *stringToDelete -ÄR- NULL
+  assert(*stringToDelete == NULL);
 }
