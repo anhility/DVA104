@@ -1,7 +1,7 @@
 # silence make output when you don't feel like using -s
 #.SILENT:
 
-TARGET_EXEC ?= 01.out
+TARGET_EXEC ?= 101.out
 
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./src
