@@ -13,7 +13,7 @@ DString dstring_initialize(const char* str)
 	   - Allokera tillräckligt med minne för att få plats med str
 	   - Det är tillåtet att använda inbyggda strängfunktioner (som t.ex strcpy())
 	   - Kom ihåg att använda assert() */
-  DString p = (DString)malloc(strlen(str)+1);
+  DString p = (DString)malloc(strlen(str) + 1);
   assert(p != NULL);
 
   strcpy(p, str);
