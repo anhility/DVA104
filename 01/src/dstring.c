@@ -13,7 +13,7 @@ DString dstring_initialize(const char* str)
 	   - Allokera tillräckligt med minne för att få plats med str
 	   - Det är tillåtet att använda inbyggda strängfunktioner (som t.ex strcpy())
 	   - Kom ihåg att använda assert() */
-  DString p = (DString)malloc(strlen(str));
+  DString p = (DString)malloc(strlen(str)+1);
   assert(p != NULL);
 
   strcpy(p, str);
@@ -37,7 +37,7 @@ int dstring_concatenate(DString* destination, DString source)
 	   - Tänk på att *destination redan är en dynamiskt allokerad sträng
 	   - Tänk på att vi kommer att behöva allokera mer minne för att få plats med den här längre strängen. 
 	   */
-  int s_size = strlen(*destination) + strlen(source);
+  int s_size = strlen(*destination) + strlen(source) + 1;
   *destination = realloc(*destination, s_size);
   assert(destination != NULL);
 
