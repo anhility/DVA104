@@ -11,7 +11,7 @@ using namespace std;
 
 int main(int argc, char* argv[]){
 
-  setlocale(LC_ALL, "sv_SE.UTF-8");
+  setlocale(LC_ALL, "");
 
   // Check if correct number of arguments are given.
   //
@@ -38,7 +38,6 @@ int main(int argc, char* argv[]){
     cout << "Argumentet måste vara ett positivt eller negativt värde!\n";
     return 0;
   }
-
 
   // Tests of function
   //

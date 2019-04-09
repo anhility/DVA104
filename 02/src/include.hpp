@@ -12,13 +12,13 @@
 //
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <iterator>
+#include <algorithm>  // all_of()
+#include <iterator>   // next()
 
 
-#include <clocale>
-#include <cassert>
-#include <cctype>
+#include <clocale>    // Changing locale to sv_SE
+#include <cassert>    // Assert testing
+#include <cctype>     // String to int
 
 
 // ###### Custom header files ######
